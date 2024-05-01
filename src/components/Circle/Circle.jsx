@@ -1,7 +1,9 @@
 import './Circle.css'
-function Circle () {
-    return (<div className="freeTurn">
-
-    </div>)
+function Circle ({ handleClick, index, children }) {
+  return (
+    <div className='freeTurn' onClick={() => { handleClick(index) }}>
+      {children}
+    </div>
+  )
 }
 export { Circle }
