@@ -19,23 +19,41 @@ const WINNER_COMBOS = [
   [0, 5, 10, 15],
   [3, 6, 9, 12]
 ]
+function checkBoard (currentBoard) {
+  for (const combo of WINNER_COMBOS) {
+    const [a, b, c, d] = combo
+    if (currentBoard[a] === currentBoard[b] && currentBoard[b] === currentBoard[c] && currentBoard[c] === currentBoard[d] && currentBoard[a] !== null) {
+      return currentBoard[a]
+    }
+  }
+  return null
+}
 function Board () {
   const [board, setBoard] = React.useState(initialBoard)
   const [turn, setTurn] = React.useState(turns.player1)
-  const [winner, setWinner] = React.useState()
+  const [winner, setWinner] = React.useState(null)
   function handleClick (index) {
     const newBoard = [...board]
-    const filledBoard = newBoard.some(box => box === null)
     if (newBoard[index]) return
+    if (winner !== null) return
+    newBoard.splice(index, 1, turn)
+    setBoard(newBoard)
+    const filledBoard = newBoard.some(box => {
+      console.log(box === null)
+      return box === null
+    })
     if (!filledBoard) {
       setWinner(false)
     }
-    newBoard.splice(index, 1, turn)
-    setBoard(newBoard)
+    const isWinner = checkBoard(newBoard)
+    if (isWinner !== null) {
+      setWinner(isWinner)
+      return
+    }
     const newTurn = turn === turns.player1 ? turns.player2 : turns.player1
     setTurn(newTurn)
   }
-
+  console.log(winner)
   return (
     <>
       <section className='board'>
@@ -52,6 +70,8 @@ function Board () {
         <p>Le toca jugar al jugador de</p>
         <p className='currentTurnIcon'>{turn}</p>
       </section>
+      {winner === false && <p>EMPATE</p>}
+      {winner !== null && winner !== false && <p>{winner}</p>}
     </>
   )
 }
