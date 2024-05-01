@@ -53,7 +53,6 @@ function Board () {
     const newTurn = turn === turns.player1 ? turns.player2 : turns.player1
     setTurn(newTurn)
   }
-  console.log(winner)
   return (
     <>
       <section className='board'>
