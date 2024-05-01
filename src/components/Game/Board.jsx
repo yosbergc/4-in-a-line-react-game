@@ -37,15 +37,22 @@ function Board () {
   }
 
   return (
-    <section className='board'>
-      {board.map((circle, index) => {
-        return (
-          <Circle key={index} handleClick={handleClick} index={index}>
-            {circle}
-          </Circle>
-        )
-      })}
-    </section>
+    <>
+      <section className='board'>
+        {board.map((circle, index) => {
+          return (
+            <Circle key={index} handleClick={handleClick} index={index}>
+              {circle}
+            </Circle>
+          )
+        })}
+      </section>
+
+      <section className='currentTurn'>
+        <p>Le toca jugar al jugador de</p>
+        <p className='currentTurnIcon'>{turn}</p>
+      </section>
+    </>
   )
 }
 export { Board }

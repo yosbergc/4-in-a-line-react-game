@@ -9,3 +9,26 @@
     display: grid;
     place-content: center;
 }
+.currentTurn {
+    padding: 20px;
+    width: fit-content;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+}
+.currentTurnIcon {
+    font-size: 3rem;
+    text-align: center;
+    border: 2px solid white;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 20px;
+
+}
+@media (min-width: 1200px) {
+    .main-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}

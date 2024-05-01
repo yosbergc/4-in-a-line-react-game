@@ -4,8 +4,9 @@
     display: grid;
     place-items: center;
     cursor: pointer;
-    font-size: 48px;
+    font-size: 30px;
     border-radius: 50%;
     border: 5px outset #4444ff;
     overflow: hidden;
+    padding: 5px;
 }
