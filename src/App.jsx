@@ -1,8 +1,8 @@
-import { Board } from "./components/Game/Board"
+import { Game } from "./components/Game/Game"
 function App() {
   return (
     <section className="main-container">
-      <Board />
+      <Game />
     </section>
   )
 }
