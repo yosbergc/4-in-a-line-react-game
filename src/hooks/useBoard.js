@@ -1,4 +1,5 @@
 import { WINNER_COMBOS, initialBoard, turns } from '../Consts/boardConst'
+import confetti from 'canvas-confetti'
 import React from 'react'
 function useBoard () {
   const [board, setBoard] = React.useState(initialBoard)
@@ -29,6 +30,7 @@ function useBoard () {
     const isWinner = checkBoard(newBoard)
     if (isWinner !== null) {
       setWinner(isWinner)
+      confetti()
       return
     }
     const newTurn = turn === turns.player1 ? turns.player2 : turns.player1
