@@ -1,7 +1,7 @@
-import { Game } from "./components/Game/Game"
-function App() {
+import { Game } from './components/Game/Game'
+function App () {
   return (
-    <section className="main-container">
+    <section className='main-container'>
       <Game />
     </section>
   )
