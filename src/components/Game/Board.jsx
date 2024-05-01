@@ -1,7 +1,7 @@
 import './board.css'
 import { Circle } from '../Circle/Circle'
+import { Endgame } from '../Endgame/Endgame'
 import React from 'react'
-
 const initialBoard = Array(16).fill(null)
 const turns = {
   player1: '❌',
@@ -53,6 +53,11 @@ function Board () {
     const newTurn = turn === turns.player1 ? turns.player2 : turns.player1
     setTurn(newTurn)
   }
+  function resetGame () {
+    setBoard(initialBoard)
+    setTurn(turns.player1)
+    setWinner(null)
+  }
   return (
     <>
       <section className='board'>
@@ -69,8 +74,7 @@ function Board () {
         <p>Le toca jugar al jugador de</p>
         <p className='currentTurnIcon'>{turn}</p>
       </section>
-      {winner === false && <p>EMPATE</p>}
-      {winner !== null && winner !== false && <p>{winner}</p>}
+      {winner !== null && <Endgame winner={winner} resetGame={resetGame} />}
     </>
   )
 }
